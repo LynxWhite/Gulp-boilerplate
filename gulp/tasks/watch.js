@@ -4,6 +4,7 @@ module.exports = function () {
         $.gulp.watch('app/static/stylus/**/*.styl', $.gulp.series('stylus'))
         $.gulp.watch('app/static/js/**/*.js', $.gulp.series('scripts'))
         $.gulp.watch(['app/static/images/**/*'], $.gulp.series('images:png:jpg:gif:dev'))
+        $.gulp.watch(['./app/static/images/**/*.svg'], $.gulp.series('svg'))
     })
 }
 
