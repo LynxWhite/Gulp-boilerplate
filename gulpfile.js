@@ -8,6 +8,7 @@ global.$ = {
     autoprefixer: require('gulp-autoprefixer'),
     notify: require('gulp-notify'),
     sourcemaps: require('gulp-sourcemaps'),
+    concat: require('gulp-concat'),
     browserSync: require('browser-sync').create(),
 
     path: {
@@ -24,6 +25,6 @@ $.path.tasks.forEach(function (taskPath) {
 // notify - обработка ошибок
 
 $.gulp.task('default', $.gulp.series(
-    $.gulp.parallel('html', 'stylus'),
+    $.gulp.parallel('html', 'stylus', 'scripts', 'scripts:lib'),
     $.gulp.parallel('watch', 'server')
 ))

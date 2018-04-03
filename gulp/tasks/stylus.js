@@ -2,7 +2,9 @@ module.exports = function () {
     $.gulp.task('stylus', function() {
         return $.gulp.src('app/static/stylus/main.styl')
         .pipe($.sourcemaps.init())
-        .pipe($.stylus())
+        .pipe($.stylus({
+            'include css': true
+        }))
         .pipe($.autoprefixer({
             browsers: ['last 10 versions']
         }))

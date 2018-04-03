@@ -4,4 +4,5 @@ module.exports = [
     './gulp/tasks/stylus',
     './gulp/tasks/server',
     './gulp/tasks/watch',
+    './gulp/tasks/scripts',
 ]
