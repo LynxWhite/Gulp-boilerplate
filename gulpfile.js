@@ -25,6 +25,6 @@ $.path.tasks.forEach(function (taskPath) {
 // notify - обработка ошибок
 
 $.gulp.task('default', $.gulp.series(
-    $.gulp.parallel('html', 'stylus', 'scripts', 'scripts:lib'),
+    $.gulp.parallel('html', 'stylus', 'scripts'),
     $.gulp.parallel('watch', 'server')
 ))
