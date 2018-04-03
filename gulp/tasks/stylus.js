@@ -6,7 +6,7 @@ module.exports = function () {
             'include css': true
         }))
         .pipe($.autoprefixer({
-            browsers: ['last 10 versions']
+            browsers: ['last 15 versions']
         }))
         .on('error', $.notify.onError({
             message: 'Error: <%= error.message %>',
