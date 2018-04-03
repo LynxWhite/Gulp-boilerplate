@@ -40,3 +40,12 @@ gulp.task('stylus', function() {
     .pipe(gulp.dest('dist/static/css'))
 })
 
+gulp.task('watch', function() {
+    gulp.watch('app/**/*.html', gulp.series('html'))
+    gulp.watch('app/static/stylus/**/*.styl', gulp.series('stylus'))
+})
+
+gulp.task('default', gulp.series(
+    gulp.parallel('html', 'stylus'),
+    'watch'
+))
