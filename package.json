@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/TonyWar/Gulp-boilerplate#readme",
   "devDependencies": {
+    "browser-sync": "^2.23.6",
     "gulp": "github:gulpjs/gulp#4.0",
     "gulp-autoprefixer": "^5.0.0",
     "gulp-csso": "^3.0.1",

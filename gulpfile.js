@@ -6,11 +6,21 @@ const gulp = require('gulp'),
       csso  = require('gulp-csso'),
       autoprefixer = require('gulp-autoprefixer'),
       notify = require('gulp-notify'),
-      sourcemaps = require('gulp-sourcemaps')
+      sourcemaps = require('gulp-sourcemaps'),
+      browserSync = require('browser-sync').create();
+
 
 // csso - минификация css
 // autoprefixer - дописывает префиксы для разных версий браузеров
 // notify - обработка ошибок
+
+gulp.task('server', function() {
+    browserSync.init({
+        server: {
+            baseDir: "./dist"
+        }
+    })
+})
 
 gulp.task('sass', function() {
     return gulp.src('app/static/sass/**/*.sass')
@@ -22,6 +32,7 @@ gulp.task('sass', function() {
 gulp.task('html', function() {
     return gulp.src('app/*.html')
     .pipe(gulp.dest('dist'))
+    .on('end', browserSync.reload)
 })
 
 gulp.task('stylus', function() {
@@ -38,6 +49,9 @@ gulp.task('stylus', function() {
     .pipe(csso())
     .pipe(sourcemaps.write())
     .pipe(gulp.dest('dist/static/css'))
+    .pipe(browserSync.reload({
+        stream: true
+    }))
 })
 
 gulp.task('watch', function() {
@@ -47,5 +61,5 @@ gulp.task('watch', function() {
 
 gulp.task('default', gulp.series(
     gulp.parallel('html', 'stylus'),
-    'watch'
+    gulp.parallel('watch', 'server')
 ))
